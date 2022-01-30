@@ -205,9 +205,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50319b88fd60579488dc5f25c48e7288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _agent: {fileID: 0}
+  agent: {fileID: 0}
   player: {fileID: 0}
   EnemyDistance: 16
+  anim: {fileID: 0}
+  explosion: {fileID: 0}
 --- !u!195 &1827193882956281100
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -218,7 +220,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 3.8
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -744,7 +746,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5561349426305759274, guid: fe3f1a8dca43a2840981a9bc989491e8, type: 3}
+  - {fileID: 2100000, guid: 4fdd455493a5e9642811f384f9d84019, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

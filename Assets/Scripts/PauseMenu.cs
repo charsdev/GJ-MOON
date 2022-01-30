@@ -12,15 +12,17 @@ public class PauseMenu : MonoBehaviour
         {
             if (!isGamePaused)
             {
-                //Time.timeScale = 0;
+                isGamePaused = true;
+                Time.timeScale = 0;
                 pauseMenuGUI.SetActive(true);
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
                 Physics.autoSimulation = false;
             }
-            else
+            else if (isGamePaused)
             {
-                //Time.timeScale = 1;
+                isGamePaused = false;
+                Time.timeScale = 1;
                 pauseMenuGUI.SetActive(false);
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
@@ -28,6 +30,21 @@ public class PauseMenu : MonoBehaviour
             }
         }
     }
-    public void RestartLevel() => SceneManager.LoadScene("TheLevel", LoadSceneMode.Single);
-    public void MainMenu() => SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+
+    public void RestartLevel()
+    {
+        Time.timeScale = 1;
+        pauseMenuGUI.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        Physics.autoSimulation = true;
+        SceneManager.LoadScene("TheLevel", LoadSceneMode.Single);
+    }
+
+    public void MainMenu()
+    {
+        Time.timeScale = 1;
+        pauseMenuGUI.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+    }
 }

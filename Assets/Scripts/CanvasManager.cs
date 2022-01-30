@@ -47,8 +47,8 @@ public class CanvasManager : MonoBehaviour
         if(GameManager.GameManagerInstance.winGame == true)
         {
             winGameCanvas.gameObject.SetActive(true);
-          
         }
+
     }
 
 }

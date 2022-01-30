@@ -48,14 +48,18 @@ using UnityEngine;
 
         private uint number = 0;
         private uint randomNumber = 0;
-        private int controlValue = 2;
-        private float controlValuef = 2.0f;
+        [Header("Segundos en los que spawneara")]
+        [SerializeField] private int controlValue = 2;
+        private float controlValuef = 0;
+        [SerializeField] private bool spawnAtNight = false;
+        private bool tokensAvailable = true;
+        
         private void Awake()
         {
             pivotCenter = transform.position;
             randomNumber = GetARandomNumber(elements.Length);
         }
-
+        
         private void FixedUpdate()
         {
             ObjectInstantiator();
@@ -63,14 +67,24 @@ using UnityEngine;
 
         private void ObjectInstantiator()
         {
-            controlValuef -= 1 * Time.deltaTime;
-            controlValue = (int)controlValuef;
-            if (controlValue <= 0)
+            if(GameManager.GameManagerInstance.isDay && !spawnAtNight && tokensAvailable)
             {
                 allowInstantiate = true;
-                controlValuef = 2.0f;
-                controlValue = 2;
             }
+            else if(!GameManager.GameManagerInstance.isDay && spawnAtNight && tokensAvailable)
+            {
+                allowInstantiate = true;
+            }
+            else if (!GameManager.GameManagerInstance.isDay && !spawnAtNight)
+            {
+                tokensAvailable = true;
+            }
+            else if (GameManager.GameManagerInstance.isDay && spawnAtNight)
+            {
+                tokensAvailable = true;
+            }
+            
+            
             if (!isActivated)
             {
                 return;
@@ -100,6 +114,7 @@ using UnityEngine;
                         }
                     }
                     allowInstantiate = false;
+                    tokensAvailable = false;
                 }
             }
         }

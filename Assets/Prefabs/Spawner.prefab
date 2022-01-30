@@ -48,7 +48,7 @@ MonoBehaviour:
   typeOfInstantiation: 0
   elements:
   - {fileID: 0}
-  - {fileID: 0}
   instantiationArea: {x: 1, y: 1, z: 1}
   showGizmo: 1
   gizmoColor: 4
+  controlValue: 2

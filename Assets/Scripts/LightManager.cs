@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
 [ExecuteAlways]
 public class LightManager : MonoBehaviour
@@ -14,6 +15,14 @@ public class LightManager : MonoBehaviour
     public float seconds = 1;
     [SerializeField]
     private ShineCounter shineCounter;
+    public Material skybox;
+    public PostProcessVolume m_Volume;
+    private Bloom b;
+
+    private void Start()
+    {
+        b = m_Volume.profile.GetSetting<Bloom>();
+    }
 
     private void Update()
     {
@@ -25,6 +34,7 @@ public class LightManager : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.T))
             {
+
                 TimeOfDay += Time.deltaTime*10;
                 TimeOfDay %= 24;
                 UpdateLighting(TimeOfDay / 24f);
@@ -39,16 +49,26 @@ public class LightManager : MonoBehaviour
 
             if(TimeOfDay >= 6 && TimeOfDay <= 6.1f)
             {
+
                 shineCounter.UpdateShines(0);
             }
 
             GameManager.GameManagerInstance.isDay = TimeOfDay >= 6 && TimeOfDay <= 19 ?  true : false; ;
-                       
+
         }
 
         else
         {
             UpdateLighting(TimeOfDay / 24f);
+        }
+
+        if (TimeOfDay > 16)
+        {
+            b.intensity.value = Mathf.Lerp(b.intensity, 1, Time.deltaTime);
+        }
+        else
+        {
+            b.intensity.value = Mathf.Lerp(b.intensity, 0, Time.deltaTime);
         }
 
 
@@ -60,7 +80,7 @@ public class LightManager : MonoBehaviour
         //Set ambient and fog
         RenderSettings.ambientLight = Preset.AmbientColor.Evaluate(timePercent);
         RenderSettings.fogColor = Preset.FogColor.Evaluate(timePercent);
-
+        skybox.SetColor("_GradientSkyColor", Preset.AmbientColor.Evaluate(timePercent));
 
         if (DirectionalLight != null)
         {

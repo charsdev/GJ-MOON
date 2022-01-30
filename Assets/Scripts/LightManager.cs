@@ -34,15 +34,16 @@ public class LightManager : MonoBehaviour
                 TimeOfDay += Time.deltaTime/seconds;
                 TimeOfDay %= 24;
                 UpdateLighting(TimeOfDay / 24f);
-               // Debug.Log(TimeOfDay);
+              
             }
 
             if(TimeOfDay >= 6 && TimeOfDay <= 6.1f)
             {
-                Debug.Log("Entra aca");
                 shineCounter.UpdateShines(0);
             }
 
+            GameManager.GameManagerInstance.isDay = TimeOfDay >= 6 && TimeOfDay <= 19 ?  true : false; ;
+                       
         }
 
         else

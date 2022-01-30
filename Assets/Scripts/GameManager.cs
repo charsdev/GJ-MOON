@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public int score;
     public int finalScore = 1;
     public bool winGame = false;
+    public bool isDay;
     private void Awake()
     {
         if (GameManagerInstance == null)

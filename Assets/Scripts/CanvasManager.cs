@@ -8,11 +8,6 @@ public class CanvasManager : MonoBehaviour
     public Canvas dialogueCanvas;
     public Canvas winGameCanvas;
 
-    private void Start()
-    {
-        winGameCanvas.gameObject.SetActive(false);
-    }
-
     public void ShowMission()
     {
         missionCanvas.gameObject.SetActive(true);
@@ -52,7 +47,6 @@ public class CanvasManager : MonoBehaviour
         if(GameManager.GameManagerInstance.winGame == true)
         {
             winGameCanvas.gameObject.SetActive(true);
-            GameManager.GameManagerInstance.score = 0;
           
         }
     }

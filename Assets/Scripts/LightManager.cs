@@ -11,12 +11,7 @@ public class LightManager : MonoBehaviour
     //Variables
     [SerializeField, Range(0, 24)] private float TimeOfDay;
     [Header("Cada unidad son 24 segundos adicionales")]
-    public int seconds = 1;
-
-    private void Start()
-    {
-       
-    }
+    public float seconds = 1;
 
     private void Update()
     {
@@ -63,7 +58,7 @@ public class LightManager : MonoBehaviour
         {
             DirectionalLight.color = Preset.DirectionalColor.Evaluate(timePercent);
 
-            DirectionalLight.transform.localRotation = Quaternion.Euler(new Vector3((timePercent * 360f) - 90f, 170f, 0));
+            DirectionalLight.transform.localRotation = Quaternion.Euler(new Vector3((timePercent * 360f) - 0f, 180f, 0));
         }
 
     }

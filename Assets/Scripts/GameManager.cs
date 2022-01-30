@@ -6,6 +6,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager GameManagerInstance;
     bool isPaused = false;
+    public int score;
+    public int finalScore = 1;
+    public bool winGame = false;
     private void Awake()
     {
         if (GameManagerInstance == null)
@@ -19,9 +22,6 @@ public class GameManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
-
-      
-
     }
 
     private void Update()

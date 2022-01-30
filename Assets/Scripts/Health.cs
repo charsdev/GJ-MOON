@@ -4,8 +4,8 @@ using System;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private float health;
-    [SerializeField] private float maxHealth;
+    public float currentHealth;
+    public float maxHealth;
     public UnityEvent onDamage;
     public UnityEvent OnDeath;
     protected new Collider2D collider;
@@ -15,7 +15,7 @@ public class Health : MonoBehaviour
 
     private void Start()
     {
-        health = maxHealth;
+        currentHealth = maxHealth;
         hasCollider = TryGetComponent<Collider2D>(out collider);
     }
 
@@ -30,20 +30,18 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(float value)
     {
-        health = health > 0 ? health - value : 0;
+        currentHealth = currentHealth > 0 ? currentHealth - value : 0;
 
-        if (health <= 0)
+        onDamage.Invoke();
+
+        if (currentHealth <= 0)
         {
             Debug.Log("DEAD");
 
             OnDeath.Invoke(); 
         }
-        else
-        {
-            onDamage.Invoke();
-        }
+   
 
-        Debug.Log(health);
 
     }
 

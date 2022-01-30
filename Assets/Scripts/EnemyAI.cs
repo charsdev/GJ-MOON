@@ -5,14 +5,17 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
-    public NavMeshAgent _agent;
+    public NavMeshAgent agent;
     public GameObject player;
     public float EnemyDistance = 4.0f;
-   
+    public Animator anim;
+    public GameObject explosion;
+
     // Start is called before the first frame update
     private void Start()
     {
-        _agent = GetComponent<NavMeshAgent>();
+        agent = GetComponent<NavMeshAgent>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -20,11 +23,12 @@ public class EnemyAI : MonoBehaviour
     {
         var delta = player.transform.position - transform.position;
         var sqrMagnitude = Vector3.SqrMagnitude(delta);
-
+        Debug.Log(sqrMagnitude);
+        anim.SetFloat("Magnitude", sqrMagnitude);
         if (sqrMagnitude < EnemyDistance * EnemyDistance)
         {
             var newPos = transform.position + delta;
-            _agent.SetDestination(newPos);
+            agent.SetDestination(newPos);
         }
     }
 
@@ -33,6 +37,7 @@ public class EnemyAI : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             other.GetComponent<Health>().TakeDamage(20);
+            Instantiate(explosion, transform.position, Quaternion.identity);
             gameObject.SetActive(false);
         }
     }

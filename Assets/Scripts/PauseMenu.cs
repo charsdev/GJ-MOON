@@ -45,6 +45,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1;
         pauseMenuGUI.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
+        Physics.autoSimulation = true;
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
 }

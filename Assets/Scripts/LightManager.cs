@@ -17,19 +17,21 @@ public class LightManager : MonoBehaviour
     private ShineCounter shineCounter;
     public Material skybox;
     public PostProcessVolume m_Volume;
-    private Bloom b;
+    private Bloom bloom;
 
     private void Start()
     {
-        b = m_Volume.profile.GetSetting<Bloom>();
+        if (m_Volume != null)
+        {
+            bloom = m_Volume.profile.GetSetting<Bloom>();
+        }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (Preset == null)
             return;
-
-
+        
         if (Application.isPlaying)
         {
             if (Input.GetKey(KeyCode.T))
@@ -44,65 +46,59 @@ public class LightManager : MonoBehaviour
                 TimeOfDay += Time.deltaTime/seconds;
                 TimeOfDay %= 24;
                 UpdateLighting(TimeOfDay / 24f);
-              
             }
 
             if(TimeOfDay >= 6 && TimeOfDay <= 6.1f)
             {
-
                 shineCounter.UpdateShines(0);
             }
-
-            GameManager.GameManagerInstance.isDay = TimeOfDay >= 6 && TimeOfDay <= 19 ?  true : false; ;
-
+            GameManager.GameManagerInstance.isDay = TimeOfDay >= 6 && TimeOfDay <= 19 ?  true : false;
         }
-
         else
         {
             UpdateLighting(TimeOfDay / 24f);
         }
-
-        if (TimeOfDay > 16)
+        if (bloom != null)
         {
-            b.intensity.value = Mathf.Lerp(b.intensity, 1, Time.deltaTime);
+            if (TimeOfDay > 16)
+            {
+                bloom.intensity.value = Mathf.Lerp(bloom.intensity, 1, Time.deltaTime);
+            }
+            else
+            {
+                bloom.intensity.value = Mathf.Lerp(bloom.intensity, 0, Time.deltaTime);
+            }
         }
-        else
-        {
-            b.intensity.value = Mathf.Lerp(b.intensity, 0, Time.deltaTime);
-        }
-
-
     }
-
-
+    
     private void UpdateLighting(float timePercent)
     {
         //Set ambient and fog
+        
         RenderSettings.ambientLight = Preset.AmbientColor.Evaluate(timePercent);
         RenderSettings.fogColor = Preset.FogColor.Evaluate(timePercent);
-        skybox.SetColor("_GradientSkyColor", Preset.AmbientColor.Evaluate(timePercent));
-
+        
+        
+        if (skybox != null)
+        {
+            skybox.SetColor("_GradientSkyColor", Preset.AmbientColor.Evaluate(timePercent));
+        }
         if (DirectionalLight != null)
         {
             DirectionalLight.color = Preset.DirectionalColor.Evaluate(timePercent);
-
             DirectionalLight.transform.localRotation = Quaternion.Euler(new Vector3((timePercent * 360f) - 0f, 180f, 0));
         }
-
     }
-
-
+    
     private void OnValidate()
     {
         if (DirectionalLight != null)
             return;
 
-
         if (RenderSettings.sun != null)
         {
             DirectionalLight = RenderSettings.sun;
         }
-
         else
         {
             Light[] lights = GameObject.FindObjectsOfType<Light>();

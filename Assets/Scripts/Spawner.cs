@@ -49,8 +49,6 @@ using UnityEngine;
         private uint number = 0;
         private uint randomNumber = 0;
         [Header("Segundos en los que spawneara")]
-        [SerializeField] private int controlValue = 2;
-        private float controlValuef = 0;
         [SerializeField] private bool spawnAtNight = false;
         private bool tokensAvailable = true;
         

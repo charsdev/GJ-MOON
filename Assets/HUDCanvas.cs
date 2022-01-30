@@ -8,6 +8,7 @@ public class HUDCanvas : MonoBehaviour
     public Slider shinebar;
 
 
+
     public void UpdateCurrentHP(Health health)
     {
         textLife.text = $"{health.currentHealth} / {health.maxHealth}";

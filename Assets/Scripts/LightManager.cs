@@ -10,7 +10,8 @@ public class LightManager : MonoBehaviour
     [SerializeField] private LightPreset Preset;
     //Variables
     [SerializeField, Range(0, 24)] private float TimeOfDay;
-  
+    [Header("Cada unidad son 24 segundos adicionales")]
+    public int seconds = 1;
 
     private void Start()
     {
@@ -33,9 +34,10 @@ public class LightManager : MonoBehaviour
             }
             else
             {
-                TimeOfDay += Time.deltaTime*0.7f;
+                TimeOfDay += Time.deltaTime/seconds;
                 TimeOfDay %= 24;
                 UpdateLighting(TimeOfDay / 24f);
+                
             }
 
 

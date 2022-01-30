@@ -14,6 +14,7 @@ public class EnemyAI : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
     }
@@ -23,7 +24,6 @@ public class EnemyAI : MonoBehaviour
     {
         var delta = player.transform.position - transform.position;
         var sqrMagnitude = Vector3.SqrMagnitude(delta);
-        Debug.Log(sqrMagnitude);
         anim.SetFloat("Magnitude", sqrMagnitude);
         if (sqrMagnitude < EnemyDistance * EnemyDistance)
         {

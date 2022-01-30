@@ -47,9 +47,9 @@ using UnityEngine;
         [SerializeField] private gizmoSelectedColor gizmoColor = gizmoSelectedColor.yellow;
 
         private uint number = 0;
-
         private uint randomNumber = 0;
-
+        private int controlValue = 2;
+        private float controlValuef = 2.0f;
         private void Awake()
         {
             pivotCenter = transform.position;
@@ -63,6 +63,14 @@ using UnityEngine;
 
         private void ObjectInstantiator()
         {
+            controlValuef -= 1 * Time.deltaTime;
+            controlValue = (int)controlValuef;
+            if (controlValue <= 0)
+            {
+                allowInstantiate = true;
+                controlValuef = 2.0f;
+                controlValue = 2;
+            }
             if (!isActivated)
             {
                 return;
@@ -100,7 +108,7 @@ using UnityEngine;
         {
             for (uint j = 0; j<iterations; j++)
             {
-                objectPosition = pivotCenter + new Vector3 (Random.Range(0, instantiationArea.x / 2), 0, 0);
+                objectPosition = pivotCenter + new Vector3 (Random.Range(0, instantiationArea.x / 2), 0, (Random.Range(0, instantiationArea.z / 2)));
                 Instantiate(elements[elementID], objectPosition, Quaternion.identity);
             }
         }

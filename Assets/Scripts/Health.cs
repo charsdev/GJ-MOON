@@ -17,6 +17,8 @@ public class Health : MonoBehaviour
     {
         currentHealth = maxHealth;
         hasCollider = TryGetComponent<Collider2D>(out collider);
+        onDamage.Invoke();
+
     }
 
     private void LateUpdate()
@@ -40,9 +42,6 @@ public class Health : MonoBehaviour
 
             OnDeath.Invoke(); 
         }
-   
-
-
     }
 
     public void SetStateCollider(bool state)

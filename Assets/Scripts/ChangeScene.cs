@@ -26,7 +26,6 @@ public class ChangeScene : MonoBehaviour
             t -= Time.deltaTime;
             float a = fadeCurve.Evaluate(t);
             imgBG.color = new Color(0.0754717f, 0.0754717f, 0.0754717f, a);
-
             yield return 0;
 
         }

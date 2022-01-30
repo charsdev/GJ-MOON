@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Light.unity
+    guid: edce6a3cd6b78e7459bd2864b9295f8c
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: f32aec653f1a0b04495b93d690907438
+  - enabled: 1
+    path: Assets/Scenes/Melee.unity
+    guid: 9a3f483680fb487448e78bd90e154f44
   m_configObjects: {}

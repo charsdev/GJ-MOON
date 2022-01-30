@@ -12,6 +12,8 @@ public class LightManager : MonoBehaviour
     [SerializeField, Range(0, 24)] private float TimeOfDay;
     [Header("Cada unidad son 24 segundos adicionales")]
     public float seconds = 1;
+    [SerializeField]
+    private ShineCounter shineCounter;
 
     private void Update()
     {
@@ -32,9 +34,14 @@ public class LightManager : MonoBehaviour
                 TimeOfDay += Time.deltaTime/seconds;
                 TimeOfDay %= 24;
                 UpdateLighting(TimeOfDay / 24f);
-                
+               // Debug.Log(TimeOfDay);
             }
 
+            if(TimeOfDay >= 6 && TimeOfDay <= 6.1f)
+            {
+                Debug.Log("Entra aca");
+                shineCounter.UpdateShines(0);
+            }
 
         }
 

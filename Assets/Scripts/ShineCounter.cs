@@ -11,10 +11,14 @@ public class ShineCounter : MonoBehaviour
     public void SumShine()
     {
         Inventory.Instance.shines = (Inventory.Instance.shines >= Threshold) ? Threshold : Inventory.Instance.shines + 1;
-        shineSlider.value += (float)Inventory.Instance.shines / (float)Threshold;
+        shineSlider.value = (float)Inventory.Instance.shines / (float)Threshold;
     }
 
-    
+    public void UpdateShines(int shines)
+    {
+        Inventory.Instance.shines = shines;
+        shineSlider.value = shines / (float)Threshold;
+    }
    
 
 }

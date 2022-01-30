@@ -22,6 +22,7 @@ public class CheckMoonShine : MonoBehaviour
     {
         if (Inventory.Instance.hasMoonShine)
         {
+            GameManager.GameManagerInstance.score += 1;
             dialogue.ActivateCanvasWithText("Gracias me has curado");
         }
         else

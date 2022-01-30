@@ -6,6 +6,7 @@ public class CanvasManager : MonoBehaviour
 {
     public Canvas missionCanvas;
     public Canvas dialogueCanvas;
+    public Canvas winGameCanvas;
 
     public void ShowMission()
     {
@@ -40,6 +41,13 @@ public class CanvasManager : MonoBehaviour
         {
             HideMission();
             GameManager.GameManagerInstance.ContinueGame();
+        }
+
+
+        if(GameManager.GameManagerInstance.winGame == true)
+        {
+            winGameCanvas.gameObject.SetActive(true);
+          
         }
     }
 

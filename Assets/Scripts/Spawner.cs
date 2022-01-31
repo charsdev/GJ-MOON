@@ -50,7 +50,7 @@ using UnityEngine;
         private uint randomNumber = 0;
         [Header("Segundos en los que spawneara")]
         [SerializeField] private bool spawnAtNight = false;
-        private bool tokensAvailable = true;
+        [SerializeField] private int availableUses = 1;
         
         private void Awake()
         {
@@ -65,23 +65,6 @@ using UnityEngine;
 
         private void ObjectInstantiator()
         {
-            if(GameManager.GameManagerInstance.isDay && !spawnAtNight && tokensAvailable)
-            {
-                allowInstantiate = true;
-            }
-            else if(!GameManager.GameManagerInstance.isDay && spawnAtNight && tokensAvailable)
-            {
-                allowInstantiate = true;
-            }
-            else if (!GameManager.GameManagerInstance.isDay && !spawnAtNight)
-            {
-                tokensAvailable = true;
-            }
-            else if (GameManager.GameManagerInstance.isDay && spawnAtNight)
-            {
-                tokensAvailable = true;
-            }
-            
             
             if (!isActivated)
             {
@@ -89,6 +72,19 @@ using UnityEngine;
             }
             else
             {
+                if(GameManager.GameManagerInstance.isDay && !spawnAtNight)
+                {
+                    allowInstantiate = true;
+                }
+                else if(!GameManager.GameManagerInstance.isDay && spawnAtNight)
+                {
+                    allowInstantiate = true;
+                }
+                else
+                {
+                    allowInstantiate = false;
+                    availableUses = 1;
+                }
                 if (!allowInstantiate)
                 {
                     return;
@@ -97,10 +93,15 @@ using UnityEngine;
                 {
                     if (typeOfInstantiation == currentTypeOfInstantiation.instanceAll)
                     {
-                        for (uint i = 0; i < elements.Length; i++)
+                        if (availableUses == 1)
                         {
-                            Instantiator(i);
+                            for (uint i = 0; i < elements.Length; i++)
+                            {
+                                Instantiator(i);
+                            }
+                            availableUses = 0;
                         }
+                        
                     }
                     else if (typeOfInstantiation == currentTypeOfInstantiation.instanceARandomOne)
                     {
@@ -112,7 +113,6 @@ using UnityEngine;
                         }
                     }
                     allowInstantiate = false;
-                    tokensAvailable = false;
                 }
             }
         }

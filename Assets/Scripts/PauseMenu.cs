@@ -6,7 +6,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject pauseMenuGUI;
     [SerializeField] private bool isGamePaused = false;
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -48,4 +48,5 @@ public class PauseMenu : MonoBehaviour
         Physics.autoSimulation = true;
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
+    
 }

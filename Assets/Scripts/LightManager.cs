@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 
@@ -10,7 +8,7 @@ public class LightManager : MonoBehaviour
     [SerializeField] private Light DirectionalLight;
     [SerializeField] private LightPreset Preset;
     //Variables
-    [SerializeField, Range(0, 24)] private float TimeOfDay;
+    [SerializeField, Range(0, 24)] public float TimeOfDay;
     [Header("Cada unidad son 24 segundos adicionales")]
     public float seconds = 1;
     [SerializeField]
@@ -21,6 +19,7 @@ public class LightManager : MonoBehaviour
 
     private void Start()
     {
+        TimeOfDay = 7.0f;
         if (m_Volume != null)
         {
             bloom = m_Volume.profile.GetSetting<Bloom>();

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9065763064959151625}
   m_Layer: 0
-  m_Name: Fragmento_de_luna
+  m_Name: Fragmento_luz_de_luna
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,7 +52,7 @@ GameObject:
   - component: {fileID: 2909487644752735381}
   - component: {fileID: 5527612353552034600}
   m_Layer: 0
-  m_Name: MoonFragment
+  m_Name: MoonLightFragment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -10,10 +10,13 @@ public class ChangeScene : MonoBehaviour
     public AnimationCurve fadeCurve;
     public string sceneName;
     public float secondsToFadeOut;
-    
+    public bool isFadeInEnabled = false;
     public void Start()
     {
-        StartCoroutine(FadeIn());
+        if (isFadeInEnabled)
+        {
+            StartCoroutine(FadeIn());
+        }
     }
 
     IEnumerator FadeIn()
@@ -45,12 +48,12 @@ public class ChangeScene : MonoBehaviour
         {
             t += Time.deltaTime;
             float a = fadeCurve.Evaluate(t);
-            imgBG.color = new Color(0.0754717f, 0.0754717f, 0.0754717f, a);
-
+            if (imgBG != null)
+            {
+                imgBG.color = new Color(0.0754717f, 0.0754717f, 0.0754717f, a);
+            }
             yield return 0;
-
         }
         SceneManager.LoadScene(scene);
-
     }
 }

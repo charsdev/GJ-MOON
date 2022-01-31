@@ -2260,6 +2260,54 @@ PrefabInstance:
       propertyPath: imgBG
       value: 
       objectReference: {fileID: 429064423}
+    - target: {fileID: 3838853756688512225, guid: 271bf1f210a0a3941b26f91e3f3de60d, type: 3}
+      propertyPath: isFadeInEnabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3838853756688512225, guid: 271bf1f210a0a3941b26f91e3f3de60d, type: 3}
+      propertyPath: secondsToFadeOut
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3838853756688512225, guid: 271bf1f210a0a3941b26f91e3f3de60d, type: 3}
+      propertyPath: fadeCurve.m_Curve.Array.data[0].time
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3838853756688512225, guid: 271bf1f210a0a3941b26f91e3f3de60d, type: 3}
+      propertyPath: fadeCurve.m_Curve.Array.data[1].time
+      value: 0.9958191
+      objectReference: {fileID: 0}
+    - target: {fileID: 3838853756688512225, guid: 271bf1f210a0a3941b26f91e3f3de60d, type: 3}
+      propertyPath: fadeCurve.m_Curve.Array.data[0].value
+      value: 0.49642944
+      objectReference: {fileID: 0}
+    - target: {fileID: 3838853756688512225, guid: 271bf1f210a0a3941b26f91e3f3de60d, type: 3}
+      propertyPath: fadeCurve.m_Curve.Array.data[1].value
+      value: 0.0010447269
+      objectReference: {fileID: 0}
+    - target: {fileID: 3838853756688512225, guid: 271bf1f210a0a3941b26f91e3f3de60d, type: 3}
+      propertyPath: fadeCurve.m_Curve.Array.data[0].inSlope
+      value: 0.19455346
+      objectReference: {fileID: 0}
+    - target: {fileID: 3838853756688512225, guid: 271bf1f210a0a3941b26f91e3f3de60d, type: 3}
+      propertyPath: fadeCurve.m_Curve.Array.data[1].inSlope
+      value: -0.6213431
+      objectReference: {fileID: 0}
+    - target: {fileID: 3838853756688512225, guid: 271bf1f210a0a3941b26f91e3f3de60d, type: 3}
+      propertyPath: fadeCurve.m_Curve.Array.data[0].outSlope
+      value: 0.19455346
+      objectReference: {fileID: 0}
+    - target: {fileID: 3838853756688512225, guid: 271bf1f210a0a3941b26f91e3f3de60d, type: 3}
+      propertyPath: fadeCurve.m_Curve.Array.data[1].inWeight
+      value: 0.116666645
+      objectReference: {fileID: 0}
+    - target: {fileID: 3838853756688512225, guid: 271bf1f210a0a3941b26f91e3f3de60d, type: 3}
+      propertyPath: fadeCurve.m_Curve.Array.data[1].outSlope
+      value: -0.6213431
+      objectReference: {fileID: 0}
+    - target: {fileID: 3838853756688512225, guid: 271bf1f210a0a3941b26f91e3f3de60d, type: 3}
+      propertyPath: fadeCurve.m_Curve.Array.data[0].outWeight
+      value: 0.07083333
+      objectReference: {fileID: 0}
     - target: {fileID: 3838853756688512226, guid: 271bf1f210a0a3941b26f91e3f3de60d, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -2313,6 +2361,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 540460515}
     m_Modifications:
+    - target: {fileID: 4959098873501886212, guid: 900e97387e70df64d813542cc90c8c45, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4959098873501886213, guid: 900e97387e70df64d813542cc90c8c45, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

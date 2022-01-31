@@ -12,7 +12,6 @@ public class HUDCanvas : MonoBehaviour
     public void UpdateCurrentHP(Health health)
     {
         textLife.text = $"{health.currentHealth} / {health.maxHealth}";
-        Debug.Log(health.currentHealth / health.maxHealth);
         hpbar.value = health.currentHealth / health.maxHealth;
     }
 }

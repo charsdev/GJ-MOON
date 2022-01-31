@@ -5,6 +5,7 @@ using UnityEngine;
 public class FloatPosition : MonoBehaviour
 {
    public float offset = 3;
+    public
     // Start is called before the first frame update
     void Start()
     {

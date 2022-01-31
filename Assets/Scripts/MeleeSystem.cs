@@ -12,6 +12,7 @@ public class MeleeSystem : MonoBehaviour
     private int hashMeleeAttack;
     private int hashStateTime;
     public int damage = 1;
+    public CharacterMovement characterMovement;
 
     public LayerMask targetLayers;
 
@@ -22,6 +23,7 @@ public class MeleeSystem : MonoBehaviour
     private Coroutine AttackWaitCoroutine;
     public float waitTimeInput = 0.03f;
 
+    public float range;
 
     private void Start()
     {
@@ -39,6 +41,7 @@ public class MeleeSystem : MonoBehaviour
         attack = true;
         yield return new WaitForSeconds(waitTimeInput);
         attack = false;
+
     }
 
 
@@ -59,6 +62,7 @@ public class MeleeSystem : MonoBehaviour
 
         if (attack && canAttack)
         {
+
             if (hasAnimator)
             {
                 animator.SetFloat(hashStateTime, Mathf.Repeat(animator.GetCurrentAnimatorStateInfo(0).normalizedTime, 1f));
@@ -74,11 +78,13 @@ public class MeleeSystem : MonoBehaviour
     public void StartAttack()
     {
         inAttack = true;
+
     }
 
     public void EndAttack()
     {
         inAttack = false;
+
     }
 
 

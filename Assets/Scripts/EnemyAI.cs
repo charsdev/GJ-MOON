@@ -25,6 +25,7 @@ public class EnemyAI : MonoBehaviour
         var delta = player.transform.position - transform.position;
         var sqrMagnitude = Vector3.SqrMagnitude(delta);
         anim.SetFloat("Magnitude", sqrMagnitude);
+
         if (sqrMagnitude < EnemyDistance * EnemyDistance)
         {
             var newPos = transform.position + delta;
@@ -37,10 +38,14 @@ public class EnemyAI : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             other.GetComponent<Health>().TakeDamage(20);
-            Instantiate(explosion, transform.position, Quaternion.identity);
-            gameObject.SetActive(false);
+            Explote();
         }
     }
 
+    public void Explote()
+    {
+        Instantiate(explosion, transform.position, Quaternion.identity);
+        gameObject.SetActive(false);
+    }
 
 }

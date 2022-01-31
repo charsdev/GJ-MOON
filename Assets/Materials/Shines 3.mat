@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shines
+  m_Name: Shines 3
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _DETAIL_MULX2 _EMISSION _METALLICGLOSSMAP
   m_LightmapFlags: 1
@@ -73,6 +73,6 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 1.0717734, g: 1.0717734, b: 1.0717734, a: 1}
+    - _Color: {r: 0.9433962, g: 0.913641, b: 0.25364897, a: 1}
+    - _EmissionColor: {r: 2.7538114, g: 2.7538114, b: 0.6488038, a: 1}
   m_BuildTextureStacks: []

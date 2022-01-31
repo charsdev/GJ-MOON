@@ -62,16 +62,7 @@ public class LightManager : MonoBehaviour
             UpdateLighting(TimeOfDay / 24f);
         }
 
-        if (TimeOfDay > 16)
-        {
-            b.intensity.value = Mathf.Lerp(b.intensity, 1, Time.deltaTime);
-        }
-        else
-        {
-            b.intensity.value = Mathf.Lerp(b.intensity, 0, Time.deltaTime);
-        }
-
-
+        b.intensity.value = Mathf.Lerp(b.intensity, (TimeOfDay > 16) ? 1 : 0, Time.deltaTime);
     }
 
 

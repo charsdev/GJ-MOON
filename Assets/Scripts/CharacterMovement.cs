@@ -22,6 +22,8 @@ public class CharacterMovement : MonoBehaviour
     public Animator anim;
     private bool isRunning = false;
     private bool isWalking = false;
+    public bool canMove = true;
+
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -30,6 +32,8 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!canMove) return;
+
         anim.SetBool("isWalking", isWalking);
         anim.SetBool("isRunning", isRunning);
         isWalking = false;
@@ -53,6 +57,7 @@ public class CharacterMovement : MonoBehaviour
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
+
 
         if (direction.magnitude >= 0.1f && Input.GetKey(KeyCode.LeftShift) == false)
         {

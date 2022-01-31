@@ -24,13 +24,20 @@ public class EnemyAI : MonoBehaviour
     {
         var delta = player.transform.position - transform.position;
         var sqrMagnitude = Vector3.SqrMagnitude(delta);
-        anim.SetFloat("Magnitude", sqrMagnitude);
 
         if (sqrMagnitude < EnemyDistance * EnemyDistance)
         {
-            var newPos = transform.position + delta;
+            var newPos = transform.position + delta.normalized;
             agent.SetDestination(newPos);
         }
+
+       // anim.SetFloat("Magnitude", sqrMagnitude);
+
+        //if (sqrMagnitude < EnemyDistance * EnemyDistance)
+        //{
+        //    var newPos = transform.position + delta;
+        //    agent.SetDestination(newPos);
+        //}
     }
 
     private void OnTriggerEnter(Collider other)

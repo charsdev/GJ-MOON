@@ -25,4 +25,9 @@ public class Inventory : MonoBehaviour
             _instance = this;
         }
     }
+
+    private void Update()
+    {
+        hasMoonShine = shines >= 10;
+    }
 }

@@ -40,7 +40,7 @@ public class Health : MonoBehaviour
         {
             Debug.Log("DEAD");
 
-            OnDeath.Invoke(); 
+            schedule += OnDeath.Invoke; 
         }
     }
 

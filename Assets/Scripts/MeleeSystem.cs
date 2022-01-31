@@ -92,7 +92,7 @@ public class MeleeSystem : MonoBehaviour
     {
         if (inAttack)
         {
-            Collider[] colliders = Physics.OverlapSphere(transform.position + Vector3.forward, 1.5f, ~0, QueryTriggerInteraction.Ignore);
+            Collider[] colliders = Physics.OverlapSphere(transform.position + Vector3.forward, 1.5f, ~0, QueryTriggerInteraction.Collide);
 
             for (int i = 0; i < colliders.Length; i++)
             {

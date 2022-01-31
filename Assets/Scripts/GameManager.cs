@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager GameManagerInstance;
     bool isPaused = false;
     public int score;
-    public int finalScore = 1;
+    public int finalScore = 100;
     public bool winGame = false;
     public bool isDay;
     private void Awake()

@@ -44,7 +44,8 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1;
         pauseMenuGUI.SetActive(false);
-        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         Physics.autoSimulation = true;
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }

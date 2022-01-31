@@ -69,7 +69,7 @@ public class CharacterMovement : MonoBehaviour
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
         }else if (direction.magnitude >= 0.1f && Input.GetKey(KeyCode.LeftShift) == true)
         {
-            speed = 15;
+            speed = 10;
             isRunning = true;
             isWalking = false;
             anim.SetBool("isRunning", isRunning);

@@ -36,7 +36,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<Health>().TakeDamage(20);
+            other.GetComponent<Health>().TakeDamage(10);
             Instantiate(explosion, transform.position, Quaternion.identity);
             gameObject.SetActive(false);
         }

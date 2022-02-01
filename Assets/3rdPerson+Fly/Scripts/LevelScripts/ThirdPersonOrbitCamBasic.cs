@@ -100,8 +100,8 @@ public class ThirdPersonOrbitCamBasic : MonoBehaviour
 	// Set camera offsets to custom values.
 	public void SetTargetOffsets(Vector3 newPivotOffset, Vector3 newCamOffset)
 	{
-		targetPivotOffset = newPivotOffset;
-		targetCamOffset = newCamOffset;
+		targetPivotOffset = pivotOffset;
+		targetCamOffset = camOffset;
 		isCustomOffset = true;
 	}
 

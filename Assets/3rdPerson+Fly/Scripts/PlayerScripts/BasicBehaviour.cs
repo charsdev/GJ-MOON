@@ -71,7 +71,7 @@ public class BasicBehaviour : MonoBehaviour
 		anim.SetFloat(vFloat, v, 0.1f, Time.deltaTime);
 
 		// Toggle sprint by input.
-		sprint = Input.GetButton (sprintButton);
+		//sprint = Input.GetButton (sprintButton);
 
 		// Set the correct camera FOV for sprint mode.
 		if(IsSprinting())
@@ -116,7 +116,7 @@ public class BasicBehaviour : MonoBehaviour
 		// Ensure the player will stand on ground if no behaviour is active or overriding.
 		if (!isAnyBehaviourActive && overridingBehaviours.Count == 0)
 		{
-			rBody.useGravity = true;
+			//rBody.useGravity = true;
 			Repositioning ();
 		}
 	}
@@ -313,8 +313,8 @@ public class BasicBehaviour : MonoBehaviour
 		{
 			lastDirection.y = 0;
 			Quaternion targetRotation = Quaternion.LookRotation (lastDirection);
-			Quaternion newRotation = Quaternion.Slerp(rBody.rotation, targetRotation, turnSmoothing);
-			rBody.MoveRotation (newRotation);
+			//Quaternion newRotation = Quaternion.Slerp(rBody.rotation, targetRotation, turnSmoothing);
+			//rBody.MoveRotation (newRotation);
 		}
 	}
 

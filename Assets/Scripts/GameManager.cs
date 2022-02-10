@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -15,14 +13,14 @@ public class GameManager : MonoBehaviour
         if (GameManagerInstance == null)
         {
             GameManagerInstance = this;
+            DontDestroyOnLoad(this.gameObject);
+            Debug.Log("bug");
         }
         else
         {
             Destroy(gameObject);
             return;
         }
-
-        DontDestroyOnLoad(gameObject);
     }
 
     private void Update()

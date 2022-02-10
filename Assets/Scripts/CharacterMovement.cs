@@ -22,6 +22,9 @@ public class CharacterMovement : MonoBehaviour
     public Animator anim;
     private bool isRunning = false;
     private bool isWalking = false;
+    private bool attackAnim = false;
+    public bool canMove = true;
+
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -30,6 +33,8 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!canMove) return;
+
         anim.SetBool("isWalking", isWalking);
         anim.SetBool("isRunning", isRunning);
         isWalking = false;
@@ -42,10 +47,10 @@ public class CharacterMovement : MonoBehaviour
             velocity.y = -2f;
         }
 
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        /*if (Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
-        }
+        }*/
         //gravity
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
@@ -54,26 +59,41 @@ public class CharacterMovement : MonoBehaviour
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
-        if (direction.magnitude >= 0.1f && Input.GetKey(KeyCode.LeftShift) == false)
+        /*if (Input.GetButtonDown("Fire1") && Time.timeScale == 1)
         {
-            speed = 6;
-            isWalking = true;
+            speed = 0;
+            isWalking = false;
             isRunning = false;
             anim.SetBool("isWalking", isWalking);
             anim.SetBool("isRunning", isRunning);
+            canMove = false;
+        }*/
+        if (direction.magnitude >= 0.1f && Input.GetKey(KeyCode.LeftShift) == false)
+        {
+            canMove = true;
+            speed = 6;
+            isWalking = true;
+            isRunning = false;
+            attackAnim = false;
+            anim.SetBool("isWalking", isWalking);
+            anim.SetBool("isRunning", isRunning);
+            anim.SetBool("attack", attackAnim);
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
-        }else if (direction.magnitude >= 0.1f && Input.GetKey(KeyCode.LeftShift) == true)
+        }
+        else if (direction.magnitude >= 0.1f && Input.GetKey(KeyCode.LeftShift) == true)
         {
-            speed = 10;
+            canMove = true;
+            speed = 15;
             isRunning = true;
             isWalking = false;
             anim.SetBool("isRunning", isRunning);
             anim.SetBool("isWalking", isWalking);
+            anim.SetBool("attack", attackAnim);
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);

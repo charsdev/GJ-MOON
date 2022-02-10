@@ -6,9 +6,10 @@ public class FloatPosition : MonoBehaviour
     
     private void Update()
     {
-        /*if (Time.timeScale == 1)
-        {*/
-            transform.position = new Vector3(transform.position.x, transform.position.y + offset * Mathf.Sin(Time.time), transform.position.z);
-        //}
+        if(Time.timeScale == 1)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y + offset * Mathf.Sin(Time.time),
+                transform.position.z);
+        }
     }
 }

@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -11,6 +10,7 @@ public class ChangeScene : MonoBehaviour
     public string sceneName;
     public float secondsToFadeOut;
     public bool isFadeInEnabled = false;
+    
     public void Start()
     {
         if (isFadeInEnabled)
@@ -52,8 +52,14 @@ public class ChangeScene : MonoBehaviour
             {
                 imgBG.color = new Color(0.0754717f, 0.0754717f, 0.0754717f, a);
             }
+            
             yield return 0;
         }
-        SceneManager.LoadScene(scene);
+        gameObject.SetActive(false);
+        Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        Physics.autoSimulation = true;
+        SceneManager.LoadScene(scene, LoadSceneMode.Single);
     }
 }
